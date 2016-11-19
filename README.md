@@ -13,4 +13,4 @@ Change git branch accordingly to tutorial.
 
 `git checkout project-setup-part-1`
 
-[Angular 1.x Codeigniter 3.x Project Setup | Part 1](https://www.youtube.com/watch?v=mHc-q0WjTQQ)
+[Video Link: Angular 1.x Codeigniter 3.x Project Setup | Part 1](https://www.youtube.com/watch?v=mHc-q0WjTQQ)
