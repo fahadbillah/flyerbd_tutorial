@@ -7,6 +7,10 @@ Angular (v-1.x) and Codeigniter (v-3.x) [Youtube Tutorial](https://www.youtube.c
 
 `bower install`
 
-Change git branch accordingly with tutorial.
+## Angular 1.x Codeigniter 3.x Project Setup | Part 2
 
-`git checkout branch_name`
+Change git branch accordingly to tutorial.
+
+`git checkout project-setup-part-2`
+
+[Angular 1.x Codeigniter 3.x Project Setup | Part 2](https://www.youtube.com/watch?v=dVBfE8kWOW8)

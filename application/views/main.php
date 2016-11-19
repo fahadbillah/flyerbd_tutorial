@@ -17,9 +17,11 @@
 
 <script src="<?php echo base_url() ?>bower_components/angular/angular.js"></script>
 <script src="<?php echo base_url() ?>bower_components/angular-route/angular-route.js"></script>
-<script src="<?php echo base_url() ?>bower_components/oclazyload/dist/ocLazyLoad.js"></script>
 
 <script src="<?php echo base_url() ?>assets/js/app.js"></script>
+<script src="<?php echo base_url() ?>assets/js/controllers/HomeCtrl.js"></script>
+<script src="<?php echo base_url() ?>assets/js/controllers/AboutCtrl.js"></script>
+<script src="<?php echo base_url() ?>assets/js/controllers/ContactCtrl.js"></script>
 
 </body>
 </html>

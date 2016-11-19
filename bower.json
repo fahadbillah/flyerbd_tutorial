@@ -15,7 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "oclazyload": "^1.0.9",
     "angular-route": "^1.5.8",
     "angular": "^1.5.8"
   }
