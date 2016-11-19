@@ -7,6 +7,10 @@ Angular (v-1.x) and Codeigniter (v-3.x) [Youtube Tutorial](https://www.youtube.c
 
 `bower install`
 
+## Angular Codeigniter Database Setup
+
 Change git branch accordingly to tutorial.
 
-`git checkout branch_name`
+`git checkout angular-codeigniter-database-setup`
+
+[Video Link: Angular Codeigniter Database Setup](https://www.youtube.com/watch?v=lIuK9xGKS5k&feature=youtu.be)
