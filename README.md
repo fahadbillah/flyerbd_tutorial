@@ -7,10 +7,10 @@ Angular (v-1.x) and Codeigniter (v-3.x) [Youtube Tutorial](https://www.youtube.c
 
 `bower install`
 
-## Angular Codeigniter Lazyload
+## Angular Codeigniter Database Setup
 
 Change git branch accordingly to tutorial.
 
-`git checkout angular-codeigniter-lazyload`
+`git checkout angular-codeigniter-database-setup`
 
-[Video Link: Angular Codeigniter Lazyload](https://www.youtube.com/watch?v=oO7AWpdAq50)
+[Video Link: Angular Codeigniter Database Setup]()
