@@ -1,0 +1,22 @@
+{
+  "name": "flyerbd",
+  "homepage": "https://github.com/fahadbillah/flyerbd_tutorial",
+  "authors": [
+    "Fahad Billah <fahadbillah@yahoo.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "oclazyload": "^1.0.9",
+    "angular-route": "^1.5.8",
+    "angular": "^1.5.8"
+  }
+}
