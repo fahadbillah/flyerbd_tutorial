@@ -13,4 +13,4 @@ Change git branch accordingly to tutorial.
 
 `git checkout angular-codeigniter-database-setup`
 
-[Video Link: Angular Codeigniter Database Setup]()
+[Video Link: Angular Codeigniter Database Setup](https://www.youtube.com/watch?v=lIuK9xGKS5k&feature=youtu.be)
