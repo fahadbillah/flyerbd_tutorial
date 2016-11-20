@@ -38,4 +38,15 @@ FLYERBD.config(['$routeProvider', function ($routeProvider) {
 			}]
 		}
 	})
+	.when('/signup', {
+		templateUrl: 'registration',
+		controller: 'SignupCtrl',
+		resolve: {
+			loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					'assets/js/controllers/SignupCtrl.js'
+					])
+			}]
+		}
+	})
 }]);
