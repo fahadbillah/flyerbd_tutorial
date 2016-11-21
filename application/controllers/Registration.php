@@ -12,6 +12,27 @@ class Registration extends CI_Controller {
 		$this->load->view('partials/registration');
 	}
 
+	public function create_user()
+	{
+		$user_data = $this->input->post();
+
+		$user_data['user_password'] = sha1($user_data['user_password']);
+
+		$this->load->model('user_model');
+		
+		if ($this->user_model->insert_user($user_data) === true) {
+			echo json_encode(array(
+				'success' => true,
+				'message' => 'Registration Successful!'
+				));
+		}else{
+			echo json_encode(array(
+				'success' => false,
+				'message' => 'Registration Failed!'
+				));
+		}
+	}
+
 }
 
 /* End of file Registration.php */
