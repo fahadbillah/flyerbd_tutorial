@@ -1,4 +1,4 @@
-<form name="registrationForm" ng-submit="registrationSubmit()" role="form">
+<form name="registrationForm" ng-submit="registrationSubmit(registration)" role="form">
 	<legend>Sign UP for FREE</legend>
 
 	<div class="form-group">
