@@ -32,8 +32,6 @@ class Registration extends CI_Controller {
 				));
 		}
 	}
-
 }
-
 /* End of file Registration.php */
 /* Location: ./application/controllers/Registration.php */

@@ -1,6 +1,7 @@
 angular.module('FLYERBD')
 .controller('SignupCtrl', ['$scope','$http', function ($scope,$http) {
 
+
 	$scope.registration = {
 		user_name: '',
 		user_email: '',
