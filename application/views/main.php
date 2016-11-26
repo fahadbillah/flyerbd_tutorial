@@ -14,6 +14,7 @@
 
 </head>
 <body>
+	<div id="fb-root"></div>
 
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">

@@ -1,4 +1,4 @@
-<div class="btn-group" role="group" aria-label="...">
+<div class="btn-group" role="group" aria-label="..." ng-click="facebookRegistration()">
   <button type="button" class="btn" style="background-color: #4864b3; color: #ffffff;"> <i class="fa fa-facebook"></i> | Login With Facebook </button>
 </div>
 
