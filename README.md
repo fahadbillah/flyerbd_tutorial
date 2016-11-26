@@ -13,4 +13,4 @@ Change git branch accordingly to tutorial.
 
 `git checkout angular-codeigniter-facebook-registration-part-2`
 
-[Video Link: Angular Codeigniter Facebook Registration | Part 2](https://www.youtube.com/watch?v=Lc6md6YLyac&feature=youtu.be)
+[Video Link: Angular Codeigniter Facebook Registration | Part 2](https://www.youtube.com/watch?v=zI5huNASlUk&feature=youtu.be)
