@@ -1,9 +1,11 @@
 var FLYERBD = angular.module('FLYERBD', [
 	'ngRoute',
-	'oc.lazyLoad'
+	'oc.lazyLoad',
 	]);
 
+
 FLYERBD.config(['$routeProvider', function ($routeProvider) {
+
 	$routeProvider
 	.when('/', {
 		templateUrl: 'home',

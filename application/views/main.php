@@ -14,6 +14,7 @@
 
 </head>
 <body>
+
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
@@ -30,7 +31,7 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#/" title="Home">Home <span class="sr-only">(current)</span></a></li>
+	        <li><a href="#/" title="Home">Home <span class="sr-only">(current)</span></a></li>
 	        <li><a href="#/about" title="About">About</a></li>
 	        <li><a href="#/contact" title="Contact">Contact</a></li>
 	      </ul>
@@ -41,7 +42,7 @@
 	        <button type="submit" class="btn btn-default">Submit</button>
 	      </form>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#/signup">Sign UP</a></li>
+	        <li class="active"><a href="#/signup">Sign UP</a></li>
 	        <li><a href="#/login">Login</a></li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
@@ -60,7 +61,10 @@
 
 <script src="<?php echo base_url() ?>bower_components/angular/angular.js"></script>
 <script src="<?php echo base_url() ?>bower_components/angular-route/angular-route.js"></script>
+<script src="<?php echo base_url() ?>bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="<?php echo base_url() ?>bower_components/ng-facebook/ngFacebook.js"></script>
 <script src="<?php echo base_url() ?>bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+<script src="<?php echo base_url() ?>bower_components/ng-facebook/ngFacebook.js"></script>
 
 <script src="<?php echo base_url() ?>assets/js/app.js"></script>
 

@@ -5,11 +5,11 @@ class Migrate extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->library('migration');
 	}
 
 	public function index()
 	{
-		$this->load->library('migration');
 
         if ($this->migration->current() === FALSE)
         {
@@ -18,7 +18,6 @@ class Migrate extends CI_Controller {
         	echo "Migration Successful!";
         }
 	}
-
 }
 
 /* End of file Migrate.php */

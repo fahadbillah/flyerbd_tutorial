@@ -1,3 +1,8 @@
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn" style="background-color: #4864b3; color: #ffffff;"> <i class="fa fa-facebook"></i> | Login With Facebook </button>
+</div>
+
+
 <form name="registrationForm" ng-submit="registrationSubmit(registration)" role="form">
 	<legend>Sign UP for FREE</legend>
 

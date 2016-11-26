@@ -7,10 +7,10 @@ Angular (v-1.x) and Codeigniter (v-3.x) [Youtube Tutorial](https://www.youtube.c
 
 `bower install`
 
-## Angular Codeigniter Registration | Part 2
+## Angular Codeigniter Facebook Registration | Part 1
 
 Change git branch accordingly to tutorial.
 
-`git checkout angular-codeigniter-registration-part-2`
+`git checkout angular-codeigniter-facebook-registration-part-1`
 
-[Video Link: Angular Codeigniter Registration | Part 2](https://www.youtube.com/watch?v=Lc6md6YLyac&feature=youtu.be)
+[Video Link: Angular Codeigniter Facebook Registration | Part 1](https://www.youtube.com/watch?v=7fkrDW4iglI&feature=youtu.be)
