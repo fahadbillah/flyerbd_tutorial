@@ -6,7 +6,7 @@ class Migration_add_facebook_data_to_user extends CI_Migration {
     {
         $fields = array(
             'user_social_id' => array(
-                'type' => 'INT',
+                'type' => 'BIGINT',
                 'null' => TRUE,
             ),
             'user_profile_pic' => array(
