@@ -1,5 +1,6 @@
 var FLYERBD = angular.module('FLYERBD', [
 	'ngRoute',
+	'ngCookies',
 	'oc.lazyLoad',
 	'ngFacebook'
 	]);
