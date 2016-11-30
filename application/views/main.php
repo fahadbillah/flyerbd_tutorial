@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="FLYERBD">
 <head>
+    <base href="http://localhost/flyerbd/">
 	<title>FLYERBD</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>bower_components/font-awesome/css/font-awesome.css">
@@ -26,15 +27,15 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#/">FLYERBD</a>
+	      <a class="navbar-brand" href="<?php echo base_url() ?>">FLYERBD</a>
 	    </div>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li><a href="#/" title="Home">Home <span class="sr-only">(current)</span></a></li>
-	        <li><a href="#/about" title="About">About</a></li>
-	        <li><a href="#/contact" title="Contact">Contact</a></li>
+	        <li><a href="<?php echo base_url() ?>" title="Home">Home <span class="sr-only">(current)</span></a></li>
+	        <li><a href="<?php echo base_url() ?>about" title="About">About</a></li>
+	        <li><a href="<?php echo base_url() ?>contact" title="Contact">Contact</a></li>
 	      </ul>
 	      <form class="navbar-form navbar-left">
 	        <div class="form-group">
@@ -43,8 +44,9 @@
 	        <button type="submit" class="btn btn-default">Submit</button>
 	      </form>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li class="active"><a href="#/signup">Sign UP</a></li>
-	        <li><a href="#/login">Login</a></li>
+	        <li class="active"><a href="<?php echo base_url() ?>signup">Sign UP</a></li>
+	        <li><a href="<?php echo base_url() ?>login">Login</a></li>
+	        <li><a href="<?php echo base_url() ?>user/fahadbillah">Profile</a></li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->

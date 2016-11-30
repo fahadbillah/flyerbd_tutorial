@@ -13,7 +13,7 @@ angular.module('FLYERBD')
 					accessToken: response.authResponse.accessToken,
 					userID: response.authResponse.userID
 				}),
-				url: 'registration/facebook',
+				url: 'api/registration/facebook',
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded'
 				}
@@ -45,7 +45,7 @@ angular.module('FLYERBD')
 		$http({
 			method: 'post',
 			data: $.param(registrationData),
-			url: 'registration/create_user',
+			url: 'api/registration/create_user',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			}
