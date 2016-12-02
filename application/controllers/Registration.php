@@ -119,25 +119,7 @@ class Registration extends CI_Controller {
 			'success' => true,
 			'message' => $message,
 			));
-
-
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 /* End of file Registration.php */
 /* Location: ./application/controllers/Registration.php */

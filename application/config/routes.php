@@ -50,5 +50,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'main';
-$route['404_override'] = '';
+
+// for every request uri that not found by CI redirect our default view route (main/index)
+$route['404_override'] = 'main/index';
+
+// this will redirect partial view request to corresponding partial loading controller/index route
+$route['view/(:any)/index'] = '$1/index';
+
+// this will redirect ajax request to corresponding CI controller/method route
+$route['api/(:any)/(:any)'] = '$1/$2';
+
+// this will redirect controller/method request uri format to our default view route (main/index)
+$route['(:any)/(:any)/(:any)'] = 'main/index';
+$route['(:any)/(:any)'] = 'main/index';
+$route['(:any)'] = 'main/index';
+
 $route['translate_uri_dashes'] = FALSE;

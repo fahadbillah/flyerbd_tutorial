@@ -7,14 +7,14 @@ var FLYERBD = angular.module('FLYERBD', [
 
 FLYERBD.constant('FACEBOOK_APP_ID', '326474321078728');
 
-FLYERBD.config(['$routeProvider','$facebookProvider','FACEBOOK_APP_ID', function ($routeProvider,$facebookProvider, facebookAppId) {
+FLYERBD.config(['$routeProvider','$facebookProvider','FACEBOOK_APP_ID','$locationProvider', function ($routeProvider,$facebookProvider,facebookAppId,$locationProvider) {
 
 	$facebookProvider.setAppId(facebookAppId);
 	$facebookProvider.setPermissions("email,user_friends");
 
 	$routeProvider
 	.when('/', {
-		templateUrl: 'home',
+		templateUrl: 'view/home/index',
 		controller: 'HomeCtrl',
 		resolve: {
 			loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -25,7 +25,7 @@ FLYERBD.config(['$routeProvider','$facebookProvider','FACEBOOK_APP_ID', function
 		}
 	})
 	.when('/about', {
-		templateUrl: 'about',
+		templateUrl: 'view/about/index',
 		controller: 'AboutCtrl',
 		resolve: {
 			loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -36,7 +36,7 @@ FLYERBD.config(['$routeProvider','$facebookProvider','FACEBOOK_APP_ID', function
 		}
 	})
 	.when('/contact', {
-		templateUrl: 'contact',
+		templateUrl: 'view/contact/index',
 		controller: 'ContactCtrl',
 		resolve: {
 			loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -47,7 +47,7 @@ FLYERBD.config(['$routeProvider','$facebookProvider','FACEBOOK_APP_ID', function
 		}
 	})
 	.when('/signup', {
-		templateUrl: 'registration',
+		templateUrl: 'view/registration/index',
 		controller: 'SignupCtrl',
 		resolve: {
 			loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -57,6 +57,42 @@ FLYERBD.config(['$routeProvider','$facebookProvider','FACEBOOK_APP_ID', function
 			}]
 		}
 	})
+	.when('/error/:errorId', {
+		templateUrl: 'view/error/index',
+		controller: 'ErrorCtrl',
+		resolve: {
+			loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					'assets/js/controllers/ErrorCtrl.js'
+					])
+			}]
+		}
+	})
+	.when('/user/:userNameOrId', {
+		templateUrl: 'view/user/index',
+		controller: 'UserCtrl',
+		resolve: {
+			loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					'assets/js/controllers/UserCtrl.js'
+					])
+			}]
+		}
+	})
+	.when('/user/profile/edit', {
+		templateUrl: 'view/user/index',
+		controller: 'UserCtrl',
+		resolve: {
+			loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					'assets/js/controllers/UserCtrl.js'
+					])
+			}]
+		}
+	})
+	.otherwise({ redirectTo: '/error/404' });
+
+	$locationProvider.html5Mode(true);
 }]);
 
 FLYERBD.run([function() {
