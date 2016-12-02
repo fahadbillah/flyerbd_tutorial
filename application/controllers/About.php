@@ -12,6 +12,15 @@ class About extends CI_Controller {
 		$this->load->view('partials/about');
 	}
 
+	public function get_flyerbd_info()
+	{
+		_json(array(
+			'established' => 2013,
+			'description' => 'Flyer posting site',
+			'founder' => 'Fahad Billah',
+			));
+	}
+
 }
 
 /* End of file About.php */

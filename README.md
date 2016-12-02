@@ -18,33 +18,53 @@ Change git branch accordingly to tutorial.
 
 # ROUTING
 
-In this app 2 types of routing system works
+We have to make sure there are only 3 type of CI route called
 
-1. Codeigniter routing system
-2. Angular routing system
+- AJAX call for JSON data
+- Load partial view from template url
+- Any other CI route redirect to `main/index`
 
-Besides from Angular app AJAX call made to Codeigniter routing system for 2 reason
+### AJAX call for JSON data
 
-1. For loading view
-2. For loading JSON data
+Let ajax call route starts with 'api'
 
-### WE NEED TO SEPARATE CODEIGNITER ROUTE FROM ANGULAR ROUTE
+`api/controller_name/method_name` 
 
-Otherwise for some route Angular app will show broken partial view which is basically Codeigniter route
+and redirect it to 
 
-### Our strategy to trigger different routing system
+`controller_name/method_name` (CI's default uri_protocol=REQUEST_URI)
 
-#### Trigger CI route in 2 occasion
+in routes.php add following line
 
-1. First loading of the app
-2. When app refreshed
+`$route['api/(:any)/(:any)'] = '$1/$2';`
 
-in both of these cases redirect CI route to our default view route (main/index)
+### Load partial view from template url
+
+Let partial view route starts with 'view'
+
+`view/controller_name/index` (as we load partial view only in index method)
+
+and redirect it to 
+
+`controller_name/index`
+
+in routes.php add following line
+
+`$route['view/(:any)/index'] = '$1/index';`
+
+### Any other CI route redirect to `main/index`
+
+For rest of the CI route redirect to load `main/index`
+
+in routes.php add following lines
+
+`$route['(:any)/(:any)/(:any)'] = 'main/index';` for controller_name/method_name/parameter_name
+`$route['(:any)/(:any)'] = 'main/index';` for controller_name/method_name/
+`$route['(:any)'] = 'main/index';` for controller_name/
+`$route['404_override'] = 'main/index';` for any route that not found
 
 
-THATS WHY WE ARE DEFINING CODEIGNITER ROUTING INTO 4 PATTERN
-	
-	1. VIEW/ANY_CONTROLLER/INDEX_METHOD		->	REDIRECTS TO ANY_CONTROLLER/INDEX_METHOD
-	2. API/ANY_CONTROLLER/ANY_METHOD		->	REDIRECTS TO ANY_CONTROLLER/ANY_METHOD
-	3. ANY_CONTROLLER/ANY_METHOD			->	REDIRECTS TO MAIN_CONTROLLER/INDEX_METHOD
-	3. ANY OTHER NON-VALID ROUTE			->	REDIRECTS TO MAIN_CONTROLLER/INDEX_METHOD
+
+
+
+

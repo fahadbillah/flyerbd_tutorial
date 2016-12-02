@@ -25,8 +25,6 @@ angular.module('FLYERBD')
 			.error(function(data) {
 				console.log(data);
 			});
-
-			
 		});
 	};
 
