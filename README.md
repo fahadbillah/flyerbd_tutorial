@@ -7,13 +7,13 @@ Angular (v-1.x) and Codeigniter (v-3.x) [Youtube Tutorial](https://www.youtube.c
 
 `bower install`
 
-## Angular Codeigniter Facebook Registration | Part 3
+## Angular Codeigniter Pretty URL
 
 Change git branch accordingly to tutorial.
 
-`git checkout angular-codeigniter-facebook-registration-part-3`
+`git checkout angular-codeigniter-pretty-url`
 
-[Video Link: Angular Codeigniter Facebook Registration | Part 3](https://www.youtube.com/watch?v=N0rjnMfajhc&feature=youtu.be)
+[Video Link: Angular Codeigniter Pretty URL](https://www.youtube.com/watch?v=L-snBhCh00Q&feature=youtu.be)
 
 
 # ROUTING
