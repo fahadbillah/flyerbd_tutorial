@@ -1,5 +1,5 @@
 angular.module('FLYERBD')
-.controller('SignupCtrl', ['$scope','$http','$facebook','FACEBOOK_APP_ID','$cookies', function ($scope,$http,$facebook,facebookAppId,$cookies) {
+.controller('SignupCtrl', ['$scope','$http','$facebook','FACEBOOK_APP_ID','$cookies','UserService', function ($scope,$http,$facebook,facebookAppId,$cookies,UserService) {
 
 	$scope.facebookRegistration = function() {
 		$facebook.login().then(function(response) {
@@ -20,6 +20,7 @@ angular.module('FLYERBD')
 			})
 			.success(function(data) {
 				console.log(data);
+				UserService.setUserData(data.data);
 				alert(data.message);
 			})
 			.error(function(data) {
@@ -61,7 +62,6 @@ angular.module('FLYERBD')
 
 				$scope.registrationForm.$setPristine();
 			}
-
 			alert(data.message);
 		})
 		.error(function(data) {
