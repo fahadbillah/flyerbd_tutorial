@@ -73,58 +73,6 @@ class Login extends CI_Controller {
 		}
 	}
 
-	public function forgot_password()
-	{
-		$forgot_password_data = $this->input->post();
-
-		$this->load->model('user_model');
-		$email_exists = $this->user_model->check_if_email_user_exists($forgot_password_data['email']);
-		$phone_exists = $this->user_model->check_if_phone_user_exists($forgot_password_data['phone']);
-
-		if ($email_exists || $phone_exists) {
-			$user_data = array(
-				'data' => array('user_token' => _random_string(40)),
-				'user_id' => $email_exists['user_id']
-				);
-			$this->user_model->update_user_data($user_data);
-
-			_json(array(
-				'success' => true,
-				'message' => 'Password reset link sent to your email! Recover from there.',
-				));
-		}else{
-			_json(array(
-				'success' => false,
-				'message' => 'Nothing matched!',
-				));
-		}
-	}
-
-	public function reset_password()
-	{
-		$reset_password_data = $this->input->post();
-		$this->load->model('user_model');
-		if ($result = $this->user_model->account_status($reset_password_data['user_token'])) {
-			$user_data = array(
-				'data' => array(
-					'user_password' => sha1($reset_password_data['password']),
-					'user_token' => null
-					),
-				'user_id' => $result['user_id']
-				);
-			$this->user_model->update_user_data($user_data);
-			_json(array(
-				'success' => true,
-				'message' => 'Password reset successfully! Please login with new password.',
-				));
-		} else {
-			_json(array(
-				'success' => false,
-				'message' => 'Token not found!',
-				));
-		}
-	}
-
 	public function logout()
 	{
 		session_destroy();

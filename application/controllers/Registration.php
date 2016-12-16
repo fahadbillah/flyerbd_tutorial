@@ -144,37 +144,6 @@ class Registration extends CI_Controller {
 			'data' => $sess
 			));
 	}
-
-	public function activate_account($token = '')
-	{
-		$this->load->model('user_model');
-		if ($result = $this->user_model->account_status($token)) {
-			if ($result['user_status'] === 'not_yet_activated') {
-				$user_data = array(
-					'data' => array(
-						'user_status' => 'activated',
-						'user_token' => null
-						),
-					'user_id' => $result['user_id']
-					);
-				$this->user_model->update_user_data($user_data);
-				_json(array(
-					'success' => true,
-					'message' => 'Account activated successfully! Please login.',
-					));
-			} else {
-				_json(array(
-					'success' => false,
-					'message' => 'Account already activated!',
-					));
-			}
-		} else {
-			_json(array(
-				'success' => false,
-				'message' => 'Token not found!',
-				));
-		}
-	}
 }
 /* End of file Registration.php */
 /* Location: ./application/controllers/Registration.php */

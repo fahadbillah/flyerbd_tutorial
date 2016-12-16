@@ -46,7 +46,9 @@
 	      <ul class="nav navbar-nav navbar-right">
 	        <li ng-if="!user.logged_in" class="active"><a href="<?php echo base_url() ?>signup">Sign UP</a></li> <!-- when user logged in signup link will disappear -->
 	        <li ng-if="!user.logged_in"><a href="<?php echo base_url() ?>login">Login</a></li> <!-- when user logged in login link will also disappear -->
+	        
 	        <li ng-if="!!user.logged_in"><a href="<?php echo base_url() ?>user/{{user.user_id}}">{{user.user_name}}</a></li> <!-- after user login profile link will be visible -->
+	        
 	        <li ng-if="!!user.logged_in"><a href="<?php echo base_url() ?>login?logout=true">Logout</a></li> <!-- after user login logout link will be visible -->
 	      </ul>
 	    </div><!-- /.navbar-collapse -->

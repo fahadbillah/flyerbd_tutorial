@@ -143,9 +143,6 @@ FLYERBD.service('UserService', ['$rootScope', '$http', function ($rootScope, $ht
 				});
 			}
 		},
-		getUserData: function() {
-			return this._user;
-		},
 		setUserData: function(data) { // this method will set user data to _user property and $rootScope.user which will use in many places
 			this._user = data;
 			$rootScope.user = data;
@@ -153,9 +150,6 @@ FLYERBD.service('UserService', ['$rootScope', '$http', function ($rootScope, $ht
 		destroy: function() { // this method will be used to destroy angular fronend site user data when user logged out
 			this._user = null;
 			$rootScope.user = null;
-		},
-		isAuthenticated: function() {
-			return !!this._user.logged_in;
 		}
 	}
 }]);
