@@ -130,9 +130,26 @@ class Registration extends CI_Controller {
 			$message = 'login successful!';
 			$sess['user_id'] = $existing_social_user['user_id'];
 		}else{
-			$this->user_model->insert_user($sess);
-			$sess['user_id'] = $this->db->insert_id();
-			$message = 'Registration successful!';
+			if ($existing_email_user = $this->user_model->check_if_email_user_exists($user['email'])) {
+				$user_data = array(
+					'data' => array(
+						'user_profile_pic' => $user['picture']['url'],
+						'user_gender' => $user['gender'],
+						'user_language' => $user['locale'],
+						'user_social_id' => (int) $user['id'],
+						'user_timezone' => $user['timezone'],
+						'user_login_type' => 'facebook',
+						),
+					'user_id' => $existing_email_user['user_id']
+					);
+				$this->user_model->update_user_data($user_data); // here activate user
+				$message = 'login successful!';
+				$sess['user_id'] = $existing_email_user['user_id'];
+			}else{
+				$this->user_model->insert_user($sess);
+				$sess['user_id'] = $this->db->insert_id();
+				$message = 'Registration successful!';
+			}
 		}
 
 		$sess['fb_access_token'] = (string) $accessToken;
