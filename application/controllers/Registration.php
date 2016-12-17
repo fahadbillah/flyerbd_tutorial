@@ -17,12 +17,12 @@ class Registration extends CI_Controller {
 		$user_data = $this->input->post();
 
 		$user_data['user_password'] = sha1($user_data['user_password']);
-		$user_data['user_token'] = _random_string(40);
+		// $user_data['user_token'] = _random_string(40);
 		$user_data['user_status'] = 'not_yet_activated';
 
 		$this->load->model('user_model');
 
-		$existing_user_data = $this->user_model->check_if_email_user_exists($user_data['user_email']);
+		// $existing_user_data = $this->user_model->check_if_email_user_exists($user_data['user_email']);
 
 		// var_dump($existing_user_data);
 		// exit();
