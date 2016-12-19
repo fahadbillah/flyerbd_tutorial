@@ -22,6 +22,14 @@ class User_model extends CI_Model {
 		return $this->db->get()->row_array();
 	}
 
+	public function check_if_email_user_exists($user_email)
+	{
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where('user_email', $user_email);
+		return $this->db->get()->row_array();
+	}
+
 	public function login_check($login_data)
 	{
 		$this->db->select('*');

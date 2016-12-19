@@ -7,10 +7,10 @@ Angular (v-1.x) and Codeigniter (v-3.x) [Youtube Tutorial](https://www.youtube.c
 
 `bower install`
 
-## Angular Codeigniter Email Login
+## Angular Codeigniter Facebook Login
 
 Change git branch accordingly to tutorial.
 
-`git checkout angular-codeigniter-email-login`
+`git checkout angular-codeigniter-facebook-login`
 
-[Video Link: Angular Codeigniter Email Login](https://www.youtube.com/watch?v=B0jNcKAh7sA&feature=youtu.be)
+[Video Link: Angular Codeigniter Facebook Login](https://www.youtube.com/watch?v=BfzzZq2lDcw&feature=youtu.be)

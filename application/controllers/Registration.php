@@ -22,23 +22,12 @@ class Registration extends CI_Controller {
 
 		$this->load->model('user_model');
 
-		$existing_user_data = $this->user_model->check_if_email_user_exists($user_data['user_email']);
-
-		// var_dump($existing_user_data);
-		// exit();
-
-		// if ($existing_user_data !== false) {
-		// 	if ($existing_user_data['password'] !== null) {
-		// 		# code...
-		// 	}
-		// 	// update_user_info
-		// 	_json(array(
-		// 		'success' => false,
-		// 		'message' => 'This email already exists! Please try to login.'
-		// 		));
-		// }
-		
-
+		if ($existing_user_data = $this->user_model->check_if_email_user_exists($user_data['user_email'])) {
+			_json(array(
+				'success' => false,
+				'message' => 'This email already exists! Please try to login.'
+				));
+		}
 		
 		if ($this->user_model->insert_user($user_data) === true) {
 			_json(array(
@@ -126,11 +115,17 @@ class Registration extends CI_Controller {
 
 		$this->load->model('user_model');
 
+		// check if social user exists
 		if ($existing_social_user = $this->user_model->check_if_social_user_exists($user['id'])) {
+			// login if exists
+			$existing_user_status = $existing_social_user['user_status'];
 			$message = 'login successful!';
 			$sess['user_id'] = $existing_social_user['user_id'];
 		}else{
+			// if social user not exists check if user with same email (from social login) exists
 			if ($existing_email_user = $this->user_model->check_if_email_user_exists($user['email'])) {
+				// if user with same email exists update old email user data and add new info gathered from facebook
+				$existing_user_status = $existing_email_user['user_status'];
 				$user_data = array(
 					'data' => array(
 						'user_profile_pic' => $user['picture']['url'],
@@ -139,6 +134,8 @@ class Registration extends CI_Controller {
 						'user_social_id' => (int) $user['id'],
 						'user_timezone' => $user['timezone'],
 						'user_login_type' => 'facebook',
+						// now update user status if account not activated or deactivated. just for user friendliness
+						'user_status' => ($existing_email_user['user_status'] === 'not_yet_activated' || $existing_email_user['user_status'] === 'deactivated') ? 'activated' : $existing_email_user['user_status']
 						),
 					'user_id' => $existing_email_user['user_id']
 					);
@@ -146,12 +143,22 @@ class Registration extends CI_Controller {
 				$message = 'login successful!';
 				$sess['user_id'] = $existing_email_user['user_id'];
 			}else{
+				// if nothing exists registration user like before (facebook registration)
 				$this->user_model->insert_user($sess);
 				$sess['user_id'] = $this->db->insert_id();
 				$message = 'Registration successful!';
 			}
 		}
 
+		// one last check if user is banned. do not let the user login.
+		if ($existing_user_status === 'banned') {
+			_json(array(
+				'success' => false,
+				'message' => 'Sorry you are banned from this site!',
+				));	
+		}
+
+		// if everything passed just set session and return user data.
 		$sess['fb_access_token'] = (string) $accessToken;
 		$sess['logged_in'] = true;
 		$this->session->set_userdata( $sess );

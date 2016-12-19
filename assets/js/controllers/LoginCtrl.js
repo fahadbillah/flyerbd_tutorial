@@ -1,5 +1,5 @@
 angular.module('FLYERBD')
-.controller('LoginCtrl', ['$scope','$http','$routeParams','UserService','$location','$facebook', function ($scope,$http,$routeParams,UserService,$location,$facebook) {
+.controller('LoginCtrl', ['$scope','$http','$routeParams','UserService','$location','$facebook','FACEBOOK_APP_ID','$cookies', function ($scope,$http,$routeParams,UserService,$location,$facebook,facebookAppId,$cookies) {
 	$scope.title = 'Login';
 
 	$scope.login = {
@@ -51,6 +51,7 @@ angular.module('FLYERBD')
 				console.log(data);
 				UserService.setUserData(data.data);
 				alert(data.message);
+				$location.path('user/'+data.data.user_id); // redirect to profile page after login
 			})
 			.error(function(data) {
 				console.log(data);
@@ -75,6 +76,7 @@ angular.module('FLYERBD')
 	};
 
 	if ($routeParams.logout) {
+		$location.search({});
 		logout();
 	}
 
