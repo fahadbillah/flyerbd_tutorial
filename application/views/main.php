@@ -6,16 +6,29 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>bower_components/font-awesome/css/font-awesome.css">
 	<link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
-
-	<style type="text/css" media="screen">
-		.navbar{
-			font-family: 'Russo One', sans-serif;
-		}
-	</style>
-
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css">
 </head>
 <body>
 	<div id="fb-root"></div>
+
+	<!-- toaster starts -->
+	<div class="toaster-box">
+		<div class="toaster" ng-class="{'toaster-success': value.type === 'success','toaster-warning': value.type === 'warning','toaster-error': value.type === 'error'}" ng-repeat="(key, value) in toaster.alerts">
+			<div class="toaster-left-box col-xs-10">
+				<div class="toaster-header">
+					<i class="fa" ng-class="{'fa-check': value.type === 'success','fa-warning': value.type === 'warning','fa-exclamation-circle': value.type === 'error'}"></i>
+					<span> {{value.title}}</span>
+				</div>
+				<div class="toaster-details">{{value.description}}</div>
+			</div>
+			<div class="toaster-right-box col-xs-2" ng-click="toaster.closeAlert(key)">
+				<div class="toaster-cross">
+					<i class="fa fa-2x fa-times"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- toaster ends -->
 
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
@@ -73,6 +86,7 @@
 <script src="<?php echo base_url() ?>bower_components/ng-facebook/ngFacebook.js"></script>
 
 <script src="<?php echo base_url() ?>assets/js/app.js"></script>
+<script src="<?php echo base_url() ?>assets/js/services/toaster.js"></script>
 
 </body>
 </html>

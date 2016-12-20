@@ -1,0 +1,75 @@
+.navbar{
+	font-family: 'Russo One', sans-serif;
+}
+
+.toaster-box{
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	z-index: 1000;
+	width: 300px;
+	min-width: 240px;
+	min-height: 80px;
+	background-color: #FFFFFF;
+	margin-bottom: 10px;
+}
+
+.toaster{
+	overflow: hidden;
+}
+
+.toaster-left-box{
+	height: 100%;
+	padding: 0px 8px;
+}
+
+.toaster-header{
+    margin-top: 4px;
+    font-size: 18px;
+}
+
+.toaster-header span{
+}
+
+.toaster-details{
+	padding: 5px 0px;
+}
+
+.toaster-right-box{
+	height: 80px;
+	text-align: center;
+	line-height: 80px;
+    padding: 0px;
+}
+
+.toaster-cross{
+	border-left: 1px solid #000;
+	cursor: pointer;
+    height: 76px;
+    margin: 2px 0px;
+
+}
+
+.toaster-cross:hover{
+	opacity: 0.6;
+}
+
+.toaster-warning{
+	background-color: #FFEA85;
+}
+
+.toaster-error{
+	background-color: #F73F52;
+}
+
+.toaster-success{
+	background-color: #90D26D;
+}
+
+.toaster-hide {
+  line-height: 0;
+  opacity: 0;
+  padding: 0 10px;
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
