@@ -1,5 +1,6 @@
 angular.module('FLYERBD')
-.controller('SignupCtrl', ['$scope','$http','$facebook','FACEBOOK_APP_ID','$cookies','UserService', function ($scope,$http,$facebook,facebookAppId,$cookies,UserService) {
+.controller('SignupCtrl', ['$rootScope','$scope','$http','$facebook','FACEBOOK_APP_ID','$cookies','UserService','Toaster','$location', function ($rootScope,$scope,$http,$facebook,facebookAppId,$cookies,UserService,Toaster,$location) {
+	$rootScope.toaster = Toaster;
 
 	$scope.facebookRegistration = function() {
 		$facebook.login().then(function(response) {
@@ -21,7 +22,14 @@ angular.module('FLYERBD')
 			.success(function(data) {
 				console.log(data);
 				UserService.setUserData(data.data);
-				alert(data.message);
+				
+				$rootScope.toaster.setAlert({
+					type: data.success ? 'success' : 'error',
+					title: data.message.title,
+					description: data.message.description
+				});
+
+				$location.path('user/'+data.data.user_id);
 			})
 			.error(function(data) {
 				console.log(data);
@@ -62,11 +70,21 @@ angular.module('FLYERBD')
 
 				$scope.registrationForm.$setPristine();
 			}
-			alert(data.message);
+			
+			$rootScope.toaster.setAlert({
+				type: data.success ? 'success' : 'error',
+				title: data.message.title,
+				description: data.message.description
+			});
 		})
 		.error(function(data) {
 			console.log(data);
-			alert('Registration Failed! Try again later.');
+
+			$rootScope.toaster.setAlert({
+				type: 'error',
+				title: 'Registration Failed!',
+				description: 'Try again later.'
+			});
 		});
 
 	};
