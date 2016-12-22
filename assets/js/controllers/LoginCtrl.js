@@ -26,7 +26,7 @@ angular.module('FLYERBD')
 			console.log(data);
 			UserService.setUserData(data.data); // use UserService to save logged in user data to angular frontend for later use
 
-			$rootScope.toaster.setAlert({
+			$rootScope.toaster.setAlert({ // push notification data into toaster service
 				type: data.success ? 'success' : 'error',
 				title: data.message.title,
 				description: data.message.description
