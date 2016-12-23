@@ -17,7 +17,7 @@ class Registration extends CI_Controller {
 		$user_data = $this->input->post();
 
 		$user_data['user_password'] = sha1($user_data['user_password']);
-		$user_data['user_token'] = _random_string(40);
+		// $user_data['user_token'] = _random_string(40);
 		$user_data['user_status'] = 'not_yet_activated';
 
 		$this->load->model('user_model');
