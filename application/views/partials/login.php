@@ -3,6 +3,10 @@
 			<div class="form-group">
 				<legend>Login</legend>
 			</div>
+
+			<div class="form-group text-center">
+				<button type="button" class="btn" style="background-color: #4864b3; color: #ffffff;" ng-click="facebookLogin()"> <i class="fa fa-facebook"></i> | Login With Facebook </button>
+			</div>
 			
 			<div class="form-group">
 				<input type="email" name="email" class="form-control" ng-model="login.email" placeholder="Email" required>

@@ -23,6 +23,20 @@ if (! function_exists('_remove_array_elements'))
 		return $array;
 	}
 }
+ 
+if (! function_exists('_random_string'))
+{
+	function _random_string($length = 10){
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
+}
+
 
 /* End of file utility_helper.php */
 /* Location: ./application/helpers/utility_helper.php */
