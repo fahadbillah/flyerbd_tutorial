@@ -1,0 +1,80 @@
+.navbar{
+	font-family: 'Russo One', sans-serif;
+}
+
+.toaster-box{
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	z-index: 1000;
+	width: 300px;
+	min-width: 240px;
+	min-height: 80px;
+	background-color: #FFFFFF;
+	margin-bottom: 10px;
+}
+
+.toaster{
+	overflow: hidden;
+
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
+}
+
+.toaster-left-box{
+	height: 100%;
+	padding: 0px 8px;
+}
+
+.toaster-header{
+    margin-top: 4px;
+    font-size: 18px;
+}
+
+.toaster-header span{
+}
+
+.toaster-details{
+	padding: 5px 0px;
+}
+
+.toaster-right-box{
+	height: 80px;
+	text-align: center;
+	line-height: 80px;
+    padding: 0px;
+}
+
+.toaster-cross{
+	border-left: 1px solid #000;
+	cursor: pointer;
+    height: 76px;
+    margin: 2px 0px;
+
+}
+
+.toaster-cross:hover{
+	opacity: 0.6;
+}
+
+.toaster-warning{
+	background-color: #FFEA85;
+}
+
+.toaster-error{
+	color: #ffffff;
+	background-color: #F73F52;
+}
+
+.toaster-success{
+	color: #ffffff;
+	background-color: #90D26D;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

@@ -32,15 +32,24 @@ class Login extends CI_Controller {
 		if ($result = $this->user_model->login_check($user_data)) { // check if email password combination is valid
 			if ($result['user_status'] === 'activated') { // login if account status is active
 				$success = true;
-				$message = 'Login successful!';
+				$message = [
+					'title' => 'login successful!',
+					'description' => 'Welcome '.$result['user_name']
+				];
 				$data = $result;
 			} else if ($result['user_status'] === 'banned') { // show message for banned user 
 				$success = false;
-				$message = 'Your account is banned!!';
+				$message = [
+					'title' => 'Your account is banned!!',
+					'description' => 'Can\'t let you in'
+				];
 				$data = [];
 			}  else if ($result['user_status'] === 'not_yet_activated') { // show message for registered but not email activated user
 				$success = false;
-				$message = 'Your account is not activated! Please activate first.';
+				$message = [
+					'title' => 'Your account is not activated!',
+					'description' => 'Please activate first.'
+				];
 				$data = [];
 			} else if ($result['user_status'] === 'deactivated') { // if user deactivated activate and login the user
 				$user_data = array(
@@ -50,7 +59,10 @@ class Login extends CI_Controller {
 				$this->user_model->update_user_data($user_data); // here activate user
 				$result['user_status'] = 'activated';
 				$success = true;
-				$message = 'Welcome back! '.$result['user_name'];
+				$message = [
+					'title' => 'login successful!',
+					'description' => 'Welcome back! '.$result['user_name']
+				];
 				$data = $result;
 			}
 
@@ -66,16 +78,28 @@ class Login extends CI_Controller {
 				'data' => $data,
 				));
 		} else {
+			$message = [
+				'title' => 'Login failed!',
+				'description' => 'email or password not matched'
+			];
 			_json(array( // if email password not matched show this message
 				'success' => false,
-				'message' => 'Login failed! email or password not matched',
+				'message' => $message,
 				));
 		}
 	}
 
 	public function logout()
 	{
+		$goodbye = array(
+			'success' => true,
+			'message' => array(
+				'title' => 'Logout successfully!',
+				'description' => 'See you later '.$this->session->userdata('user_name')
+				)
+			);
 		session_destroy();
+		_json($goodbye);
 	}
 
 }

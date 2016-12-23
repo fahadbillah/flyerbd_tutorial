@@ -109,6 +109,9 @@ FLYERBD.config(['$routeProvider','$facebookProvider','FACEBOOK_APP_ID','$locatio
 FLYERBD.run(['$rootScope','UserService', function($rootScope,UserService) {
 	$rootScope.user = null; // we define $rootScope.user which will used in many places
 	UserService.init(); // every time page refreshed it will check ci backend and if logged_in set user data in angular frontend
+
+	$rootScope.toaster = null; // toaster variable reachable from everywhere
+
 	(function(){
 		if (document.getElementById('facebook-jssdk')) {return;}
 		var firstScriptElement = document.getElementsByTagName('script')[0];

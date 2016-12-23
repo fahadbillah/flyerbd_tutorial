@@ -1,5 +1,8 @@
 angular.module('FLYERBD')
-.controller('LoginCtrl', ['$scope','$http','$routeParams','UserService','$location','$facebook','FACEBOOK_APP_ID','$cookies', function ($scope,$http,$routeParams,UserService,$location,$facebook,facebookAppId,$cookies) {
+.controller('LoginCtrl', ['$rootScope','$scope','$http','$routeParams','UserService','$location','$facebook','FACEBOOK_APP_ID','$cookies','Toaster', function ($rootScope,$scope,$http,$routeParams,UserService,$location,$facebook,facebookAppId,$cookies,Toaster) {
+
+	$rootScope.toaster = Toaster;
+
 	$scope.title = 'Login';
 
 	$scope.login = {
@@ -22,8 +25,15 @@ angular.module('FLYERBD')
 		.success(function(data) {
 			console.log(data);
 			UserService.setUserData(data.data); // use UserService to save logged in user data to angular frontend for later use
-			alert(data.message);
-			$location.path('user/'+data.data.user_id); // redirect to profile page after login
+
+			$rootScope.toaster.setAlert({ // push notification data into toaster service
+				type: data.success ? 'success' : 'error',
+				title: data.message.title,
+				description: data.message.description
+			});
+			if (!!data.success) {
+				$location.path('user/'+data.data.user_id); // redirect to profile page after login
+			}
 		})
 		.error(function(data) {
 			console.log(data);
@@ -50,7 +60,13 @@ angular.module('FLYERBD')
 			.success(function(data) {
 				console.log(data);
 				UserService.setUserData(data.data);
-				alert(data.message);
+
+				$rootScope.toaster.setAlert({
+					type: data.success ? 'success' : 'error',
+					title: data.message.title,
+					description: data.message.description
+				});
+				// alert(data.message);
 				$location.path('user/'+data.data.user_id); // redirect to profile page after login
 			})
 			.error(function(data) {
@@ -68,6 +84,12 @@ angular.module('FLYERBD')
 		.success(function(data) {
 			console.log(data);
 			UserService.destroy();
+
+			$rootScope.toaster.setAlert({
+				type: data.success ? 'success' : 'error',
+				title: data.message.title,
+				description: data.message.description
+			});
 		})
 		.error(function(data) {
 			console.log(data);

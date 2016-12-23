@@ -23,21 +23,33 @@ class Registration extends CI_Controller {
 		$this->load->model('user_model');
 
 		if ($existing_user_data = $this->user_model->check_if_email_user_exists($user_data['user_email'])) {
+			$message = [
+				'title' => 'This email already exists!',
+				'description' => 'Please try to login.'
+			];
 			_json(array(
 				'success' => false,
-				'message' => 'This email already exists! Please try to login.'
+				'message' => $message
 				));
 		}
 		
 		if ($this->user_model->insert_user($user_data) === true) {
+			$message = [
+				'title' => 'Registration Successful!',
+				'description' => 'Please login.'
+			];
 			_json(array(
 				'success' => true,
-				'message' => 'Registration Successful!'
+				'message' => $message
 				));
 		}else{
+			$message = [
+				'title' => 'Registration Failed!',
+				'description' => 'Please try again later.'
+			];
 			_json(array(
 				'success' => false,
-				'message' => 'Registration Failed!'
+				'message' => $message
 				));
 		}
 	}
@@ -119,7 +131,10 @@ class Registration extends CI_Controller {
 		if ($existing_social_user = $this->user_model->check_if_social_user_exists($user['id'])) {
 			// login if exists
 			$existing_user_status = $existing_social_user['user_status'];
-			$message = 'login successful!';
+			$message = [
+				'title' => 'login successful!',
+				'description' => 'Welcome '.$existing_social_user['user_name']
+			];
 			$sess['user_id'] = $existing_social_user['user_id'];
 		}else{
 			// if social user not exists check if user with same email (from social login) exists
@@ -140,21 +155,32 @@ class Registration extends CI_Controller {
 					'user_id' => $existing_email_user['user_id']
 					);
 				$this->user_model->update_user_data($user_data); // here activate user
-				$message = 'login successful!';
+				$message = [
+					'title' => 'login successful!',
+					'description' => 'Welcome '.$existing_email_user['user_name']
+				];
 				$sess['user_id'] = $existing_email_user['user_id'];
 			}else{
 				// if nothing exists registration user like before (facebook registration)
 				$this->user_model->insert_user($sess);
 				$sess['user_id'] = $this->db->insert_id();
-				$message = 'Registration successful!';
+				$message = [
+					'title' => 'Registration successful!',
+					'description' => 'Welcome '.$sess['user_name']
+				];
 			}
 		}
 
 		// one last check if user is banned. do not let the user login.
 		if ($existing_user_status === 'banned') {
+
+			$message = [
+				'title' => 'Your account is banned!!',
+				'description' => 'Can\'t let you in'
+			];
 			_json(array(
 				'success' => false,
-				'message' => 'Sorry you are banned from this site!',
+				'message' => $message,
 				));	
 		}
 
