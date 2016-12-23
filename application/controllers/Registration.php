@@ -17,16 +17,36 @@ class Registration extends CI_Controller {
 		$user_data = $this->input->post();
 
 		$user_data['user_password'] = sha1($user_data['user_password']);
+		// $user_data['user_token'] = _random_string(40);
+		$user_data['user_status'] = 'not_yet_activated';
 
 		$this->load->model('user_model');
+
+		// $existing_user_data = $this->user_model->check_if_email_user_exists($user_data['user_email']);
+
+		// var_dump($existing_user_data);
+		// exit();
+
+		// if ($existing_user_data !== false) {
+		// 	if ($existing_user_data['password'] !== null) {
+		// 		# code...
+		// 	}
+		// 	// update_user_info
+		// 	_json(array(
+		// 		'success' => false,
+		// 		'message' => 'This email already exists! Please try to login.'
+		// 		));
+		// }
+		
+
 		
 		if ($this->user_model->insert_user($user_data) === true) {
-			echo json_encode(array(
+			_json(array(
 				'success' => true,
 				'message' => 'Registration Successful!'
 				));
 		}else{
-			echo json_encode(array(
+			_json(array(
 				'success' => false,
 				'message' => 'Registration Failed!'
 				));
@@ -106,18 +126,22 @@ class Registration extends CI_Controller {
 
 		$this->load->model('user_model');
 
-		if ($this->user_model->check_if_social_user_exists($user['id']) === 0) {
-			$this->user_model->insert_user($sess);
-			$message = 'Registration successful!';
-		}else{
+		if ($existing_social_user = $this->user_model->check_if_social_user_exists($user['id'])) {
 			$message = 'login successful!';
+			$sess['user_id'] = $existing_social_user['user_id'];
+		}else{
+			$this->user_model->insert_user($sess);
+			$sess['user_id'] = $this->db->insert_id();
+			$message = 'Registration successful!';
 		}
 
 		$sess['fb_access_token'] = (string) $accessToken;
+		$sess['logged_in'] = true;
 		$this->session->set_userdata( $sess );
 		_json(array(
 			'success' => true,
 			'message' => $message,
+			'data' => $sess
 			));
 	}
 }

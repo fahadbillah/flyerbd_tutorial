@@ -19,7 +19,22 @@ class User_model extends CI_Model {
 	{
 		$this->db->where('user_social_id', (int) $social_id);
 		$this->db->from('users');
-		return $this->db->count_all_results();
+		return $this->db->get()->row_array();
+	}
+
+	public function login_check($login_data)
+	{
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where('user_email', $login_data['email']);
+		$this->db->where('user_password', sha1($login_data['password']));
+		return $this->db->get()->row_array();
+	}
+
+	public function update_user_data($user_data)
+	{
+		$this->db->where('user_id', $user_data['user_id']);
+		return $this->db->update('users', $user_data['data']);
 	}
 
 }

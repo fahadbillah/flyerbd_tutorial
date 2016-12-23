@@ -18,6 +18,15 @@ class Migrate extends CI_Controller {
         	echo "Migration Successful!";
         }
 	}
+
+	public function roll_back($version)
+	{
+		if ($this->migration->version($version)) {
+			echo "Rollback successful!";
+		} else {
+			echo "Rollback failed!";
+		}
+	}
 }
 
 /* End of file Migrate.php */
