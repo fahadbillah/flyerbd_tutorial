@@ -12,7 +12,7 @@
 	<div id="fb-root"></div>
 
 	<!-- toaster starts -->
-	<div class="toaster-box" ng-if="!!toaster.alerts.length">
+	<div class="toaster-box" ng-if="!!toaster.alerts.length"> 
 		<div class="toaster" ng-class="{'toaster-success': value.type === 'success','toaster-warning': value.type === 'warning','toaster-error': value.type === 'error'}" ng-repeat="(key, value) in toaster.alerts">
 			<div class="toaster-left-box col-xs-10">
 				<div class="toaster-header">
