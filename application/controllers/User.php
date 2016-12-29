@@ -14,7 +14,6 @@ class User extends CI_Controller {
 
 	public function upload_profile_pic()
 	{
-		// var_dump($this->input->post());
 
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
@@ -29,7 +28,6 @@ class User extends CI_Controller {
         if ( ! $this->upload->do_upload('image'))
         {
                 $error = array('error' => $this->upload->display_errors());
-                // var_dump($error);
 
 				$result = array(
 					'success' => true,
@@ -43,7 +41,6 @@ class User extends CI_Controller {
         else
         {
             $data = array('upload_data' => $this->upload->data());
-            // var_dump($data);
 			$this->load->library('image_lib');
 
         	$thumbnail['image_library'] = 'gd2';
@@ -53,7 +50,7 @@ class User extends CI_Controller {
 			$thumbnail['width']         = 50;
 
 
-			// var_dump($this->image_lib->initialize($thumbnail));
+			$this->image_lib->initialize($thumbnail);
 
 			$this->image_lib->resize();
 
@@ -79,7 +76,6 @@ class User extends CI_Controller {
 				'user_id' => $this->session->userdata('user_id')
 				);
 
-
 			$this->user_model->update_user_data($user_data); // here activate user
 
 			$result = array(
@@ -89,7 +85,7 @@ class User extends CI_Controller {
 					'message' => 'Successfully set profile picture.',
 					),
 				'data' => array(
-					'user_profile_pic' => $data['upload_data']['file_name'],
+					'user_profile_pic' => $data['upload_data']['file_name']
 					)
 				);
 
