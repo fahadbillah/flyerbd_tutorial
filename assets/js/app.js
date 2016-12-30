@@ -85,6 +85,7 @@ FLYERBD.config(['$routeProvider','$facebookProvider','FACEBOOK_APP_ID','$locatio
 		resolve: {
 			loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
 				return $ocLazyLoad.load({
+					// this name will inject into angular module
 					name: 'angularFileUpload',
 					files: [
 									'assets/js/controllers/UserCtrl.js',

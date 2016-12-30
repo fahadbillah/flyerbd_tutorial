@@ -14,14 +14,11 @@ class User extends CI_Controller {
 
 	public function upload_profile_pic()
 	{
-
+		
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 10000;
         $config['encrypt_name']			= true;
-
-        // $config['max_width']            = 1024;
-        // $config['max_height']           = 768;
 
         $this->load->library('upload', $config);
 
@@ -43,6 +40,9 @@ class User extends CI_Controller {
             $data = array('upload_data' => $this->upload->data());
 			$this->load->library('image_lib');
 
+
+			/*----------  thumbnail creating block start  ----------*/
+			
         	$thumbnail['image_library'] = 'gd2';
 			$thumbnail['source_image'] = './uploads/'.$data['upload_data']['file_name'];
 			$thumbnail['create_thumb'] = TRUE;
@@ -54,8 +54,11 @@ class User extends CI_Controller {
 
 			$this->image_lib->resize();
 
+			/*----------  thumbnail creating block end  ----------*/
+
             $this->image_lib->clear();
 
+			/*----------  image resizing block start  ----------*/
         	$resize['image_library'] = 'gd2';
 			$resize['source_image'] = './uploads/'.$data['upload_data']['file_name'];
 			$resize['maintain_ratio'] = TRUE;
@@ -65,9 +68,9 @@ class User extends CI_Controller {
 			$this->image_lib->initialize($resize);
 
 			$this->image_lib->resize();
+			/*----------  image resizing block end  ----------*/
 
 			$this->load->model('user_model');
-
 
 			$user_data = array(
 				'data' => array(
@@ -76,7 +79,7 @@ class User extends CI_Controller {
 				'user_id' => $this->session->userdata('user_id')
 				);
 
-			$this->user_model->update_user_data($user_data); // here activate user
+			$this->user_model->update_user_data($user_data); // here update user info
 
 			$result = array(
 				'success' => true,

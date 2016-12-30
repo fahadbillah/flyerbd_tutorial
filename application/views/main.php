@@ -60,7 +60,13 @@
 	        <li ng-if="!user.logged_in" class="active"><a href="<?php echo base_url() ?>signup">Sign UP</a></li> <!-- when user logged in signup link will disappear -->
 	        <li ng-if="!user.logged_in"><a href="<?php echo base_url() ?>login">Login</a></li> <!-- when user logged in login link will also disappear -->
 	        
-	        <li ng-if="!!user.logged_in"><a href="<?php echo base_url() ?>user/{{user.user_id}}" style="padding: 0px;"><img class="img-circle" ng-src="<?php echo base_url() ?>uploads/{{user.user_profile_pic | thumb}}" alt="">{{user.user_name}}</a></li> <!-- after user login profile link will be visible -->
+	        <li ng-if="!!user.logged_in">
+	        	<a href="<?php echo base_url() ?>user/{{user.user_id}}" style="padding: 0px;">
+	        		<img ng-if="!user.user_profile_pic" class="img-circle" src="http://placehold.it/50" alt="">
+	        		<img ng-if="!!user.user_profile_pic" class="img-circle" ng-src="<?php echo base_url() ?>uploads/{{user.user_profile_pic | thumb}}" alt="">
+	        		{{user.user_name}}
+	        	</a>
+        	</li> <!-- after user login profile link will be visible -->
 	        
 	        <li ng-if="!!user.logged_in"><a href="<?php echo base_url() ?>login?logout=true">Logout</a></li> <!-- after user login logout link will be visible -->
 	      </ul>
