@@ -1,0 +1,63 @@
+<project name="flyerbd" default="build" basedir=".">
+	<description>
+		Flyerbd build.xml
+	</description>
+	<!-- set global properties for this build -->
+	<property name="app" location="application"/>
+	<property name="assets" location="assets"/>
+
+	<target name="build" depends="replace">
+	</target>
+
+	<target name="replace">
+		<!-- Create the time stamp -->
+		<tstamp/>
+
+		<!-- load properties from file -->
+		<loadproperties>
+	      <file file="build.properties"/>
+	    </loadproperties>
+		<replaceregexp file="${assets}/js/app.js"
+               match="FLYERBD.constant\('FACEBOOK_APP_ID', '(.*)'\);"
+               replace="FLYERBD.constant\('FACEBOOK_APP_ID', '${facebook_app_id}'\);"
+               byline="true"
+		/>
+		<replaceregexp file="${app}/config/config.php"
+               match="\$config\[\'base_url\'\] = '(.*)'"
+               replace="$config['base_url'] = '${base_url}'"
+               byline="true"
+		/>
+		<replaceregexp file="${app}/config/config.php"
+               match="\$facebook_app_id = '(.*)';"
+               replace="$facebook_app_id = '${facebook_app_id}';"
+               byline="true"
+		/>
+		<replaceregexp file="${app}/config/database.php"
+               match="'database' => '(.*)'"
+               replace="'database' => '${database}'"
+               byline="true"
+		/>
+		<replaceregexp file="${app}/config/database.php"
+               match="'username' => '(.*)'"
+               replace="'username' => '${username}'"
+               byline="true"
+		/>
+		<replaceregexp file="${app}/config/database.php"
+               match="'password' => '(.*)'"
+               replace="'password' => '${password}'"
+               byline="true"
+		/>
+		<replaceregexp file="${app}/controllers/Registration.php"
+               match="\$facebook_app_id = '(.*)';"
+               replace="$facebook_app_id = '${facebook_app_id}';"
+               byline="true"
+		/>
+		<replaceregexp file="${app}/controllers/Registration.php"
+               match="facebook_app_secret = '(.*)';"
+               replace="facebook_app_secret = '${facebook_app_secret}';"
+               byline="true"
+		/>
+	</target>
+
+
+</project>

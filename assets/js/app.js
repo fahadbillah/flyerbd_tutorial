@@ -5,7 +5,7 @@ var FLYERBD = angular.module('FLYERBD', [
 	'ngFacebook'
 	]);
 
-FLYERBD.constant('FACEBOOK_APP_ID', '326474321078728');
+FLYERBD.constant('FACEBOOK_APP_ID', 'some_app_id');
 
 FLYERBD.config(['$routeProvider','$facebookProvider','FACEBOOK_APP_ID','$locationProvider', function ($routeProvider,$facebookProvider,facebookAppId,$locationProvider) {
 

@@ -30,3 +30,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 bower_components
 node_modules
 uploads/
+build.properties

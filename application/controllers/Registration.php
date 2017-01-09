@@ -60,7 +60,10 @@ class Registration extends CI_Controller {
 
 		date_default_timezone_set('UTC');
 
-		$fbApp = new Facebook\FacebookApp('326474321078728', '10c982d5c0f7e5dfe4516e37b7e66337');
+		$facebook_app_id = 'some_app_id';
+		$facebook_app_secret = 'some_secret_id';
+
+		$fbApp = new Facebook\FacebookApp($facebook_app_id, $facebook_app_secret);
 				
 
 		$signedRequest = new Facebook\SignedRequest($fbApp, $login_data['signedRequest']);
@@ -68,8 +71,8 @@ class Registration extends CI_Controller {
 
 
 		$fb = new Facebook\Facebook([
-			'app_id' => '326474321078728',
-			'app_secret' => '10c982d5c0f7e5dfe4516e37b7e66337',
+			'app_id' => $facebook_app_id,
+			'app_secret' => $facebook_app_secret,
 			'default_graph_version' => 'v2.8',
 			]);
 
